@@ -1,18 +1,13 @@
 package com.nelsonenterprises.nelsonspringboot.config;
 
-import com.nelsonenterprises.nelsonspringboot.entities.Category;
-import com.nelsonenterprises.nelsonspringboot.entities.Order;
-import com.nelsonenterprises.nelsonspringboot.entities.Product;
-import com.nelsonenterprises.nelsonspringboot.entities.User;
+import com.nelsonenterprises.nelsonspringboot.entities.*;
 import com.nelsonenterprises.nelsonspringboot.entities.enums.OrderStatus;
-import com.nelsonenterprises.nelsonspringboot.repositories.CategoryRepository;
-import com.nelsonenterprises.nelsonspringboot.repositories.OrderRepository;
-import com.nelsonenterprises.nelsonspringboot.repositories.ProductRepository;
-import com.nelsonenterprises.nelsonspringboot.repositories.UserRepository;
+import com.nelsonenterprises.nelsonspringboot.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.Instant;
 import java.util.Arrays;
@@ -32,6 +27,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
 
     @Override
@@ -62,6 +60,9 @@ public class TestConfig implements CommandLineRunner {
 
         productRepository.saveAll(Arrays.asList(p1,p2,p3));
 
+        OrderItem oi1 = new OrderItem(o2,p2, 4, p2.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1));
 
     }
 }
