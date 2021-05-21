@@ -48,13 +48,18 @@ public class TestConfig implements CommandLineRunner {
         Product p3 = new Product(null, "Whey Optimum Nutrition", "pai arnold", 300.0, "");
 
         Category cat1 = new Category(null, "WHEY");
-        Category cat2 = new Category(null, "BCAA");
+        Category cat2 = new Category(null, "BCAA e Albumina");
         Category cat3 = new Category(null, "CREATINA");
-
 
         userRepository.saveAll(Arrays.asList(u1,u2));
         orderRepository.saveAll(Arrays.asList(o1,o2,o3));
         categoryRepository.saveAll(Arrays.asList(cat1,cat2,cat3));
+        productRepository.saveAll(Arrays.asList(p1,p2,p3));
+
+        p1.getCategories().add(cat2);
+        p2.getCategories().add(cat3);
+        p3.getCategories().add(cat1);
+
         productRepository.saveAll(Arrays.asList(p1,p2,p3));
 
 
