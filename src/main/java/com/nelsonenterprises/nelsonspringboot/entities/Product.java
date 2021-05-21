@@ -92,7 +92,7 @@ public class Product implements Serializable {
         Product product = (Product) o;
         return Objects.equals(id, product.id) && Objects.equals(name, product.name) && Objects.equals(description, product.description) && Objects.equals(price, product.price) && Objects.equals(imgUrl, product.imgUrl);
     }
-    
+
     @JsonIgnore
     public Set<Order> getOrder() {
         Set<Order> set = new HashSet<>();
